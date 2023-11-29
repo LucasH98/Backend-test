@@ -1,4 +1,4 @@
-package ParkingLotAPI.parkingLot.util;
+package ParkingLotAPI.parkingLot.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,40 +11,36 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import ParkingLotAPI.parkingLot.model.Vehicle;
-
 @Document
 public class MovementRecord implements Serializable {
-	private static final long serialVersionUID = 1L;	
-	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String id;
-	
+
 	@DBRef
 	@JsonIgnore
 	private Vehicle vehicle;
-	
+
 	@Field("entryTime")
 	private LocalDateTime entryTime;
-	
+
 	@Field("exitTime")
 	private LocalDateTime exitTime;
-	
-	//@Transient 
+
+	// @Transient
 	private boolean isParking;
-	
 
 	public MovementRecord() {
-		
-	}
-	
-	public MovementRecord(Vehicle vehicle) {
-		this.vehicle = vehicle;	
-		this.isParking = false ;
-	    this.entryTime = null;
-		this.exitTime = null;
+
 	}
 
+	public MovementRecord(Vehicle vehicle) {
+		this.vehicle = vehicle;
+		this.isParking = false;
+		this.entryTime = null;
+		this.exitTime = null;
+	}
 
 	public String getId() {
 		return id;
@@ -77,7 +73,7 @@ public class MovementRecord implements Serializable {
 	public void setExitTime(LocalDateTime exitTime) {
 		this.exitTime = exitTime;
 	}
-	
+
 	public boolean isParking() {
 		return isParking;
 	}
@@ -85,37 +81,30 @@ public class MovementRecord implements Serializable {
 	public void setParking(boolean isParking) {
 		this.isParking = isParking;
 	}
-	
-	
-	
-	
-
 
 	public void entrou() {
-		
-        if (entryTime == null) {
-        	entryTime = LocalDateTime.now(ZoneId.systemDefault());
-			System.out.println("Entrada validada "+entryTime);
-            isParking = true;              
-        }
-    }
-	
-	public void saiu() {
 
-	    if (exitTime == null && entryTime != null) {
-	        exitTime = LocalDateTime.now(ZoneId.systemDefault());
-	        isParking = false;
-	        System.out.println("Saída validada " + exitTime);	       
-
-	    }
+		if (entryTime == null) {
+			entryTime = LocalDateTime.now(ZoneId.systemDefault());
+			System.out.println("Entrada validada " + entryTime);
+			isParking = true;
+		}
 	}
 
+	public void saiu() {
+
+		if (exitTime == null && entryTime != null) {
+			exitTime = LocalDateTime.now(ZoneId.systemDefault());
+			isParking = false;
+			System.out.println("Saída validada " + exitTime);
+
+		}
+	}
 
 	@Override
 	public String toString() {
 		return "MovementRecord [id=" + id + ", entryTime=" + entryTime + ", exitTime=" + exitTime + ", vehicle="
 				+ vehicle + "]";
 	}
-
 
 }

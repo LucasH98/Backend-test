@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
+import ParkingLotAPI.parkingLot.model.MovementRecord;
 import ParkingLotAPI.parkingLot.model.Vehicle;
-import ParkingLotAPI.parkingLot.util.MovementRecord;
 
 public class movementRecordDTO implements Serializable {
 	private static final long serialVersionUID = 1L;	

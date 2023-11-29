@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ParkingLotAPI.parkingLot.model.Vehicle;
+import ParkingLotAPI.parkingLot.model.MovementRecord;
 import ParkingLotAPI.parkingLot.service.MovementRecordService;
-import ParkingLotAPI.parkingLot.util.MovementRecord;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name="Api do registro de movimento dos veículos")
 @RestController
 @RequestMapping("/record")
 public class MovementRecordController {

@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ParkingLotAPI.parkingLot.util.TransactionReport;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -30,6 +30,7 @@ private Integer qntVagaMoto;
 private List<Vehicle> vehicles  = new ArrayList<>();
 
 @DBRef
+@JsonIgnore
 private TransactionReport transactionReport ;
 
 public Company(String id,String cnpj,String name, String endereco, String telefone, Integer qntVagaCarro, Integer qntVagaMoto) {

@@ -7,121 +7,128 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import ParkingLotAPI.parkingLot.util.MovementRecord;
-
 @Document(collection = "Vehicle")
-public class Vehicle implements Serializable{
-private static final long serialVersionUID = 1L;
+public class Vehicle implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-@Id
-private String id;
-private String placa;
-private String marca;
-private String modelo;
-private String cor;
-private String tipo ;
+	@Id
+	private String id;
+	private String placa;
+	private String marca;
+	private String modelo;
+	private String cor;
+	private String tipo;
 
-@DBRef
-//@JsonBackReference
-@JsonIgnore
-private MovementRecord movementRecord;
+	@DBRef
+	//@JsonBackReference
+	@JsonIgnore
+	private MovementRecord movementRecord;
 
-public Vehicle() {
-	
-}
+	@DBRef
+	@JsonIgnore
+	private Company company;
 
-public Vehicle(String id ,String placa, String marca ,String modelo , String cor, String tipo) {
-	
-	this.id = id;
-	this.placa = placa;
-	this.marca = marca;
-	this.modelo = modelo;
-	this.cor = cor;
-	this.tipo = tipo;
-}
+	public Vehicle() {
 
-public String getId() {
-return id;	
-}
+	}
 
-public void setId(String id) {
-	this.id = id ;
-}
+	public Vehicle(String id, String placa, String marca, String modelo, String cor, String tipo) {
 
-public String getMarca() {
-	return marca;
-}
+		this.id = id;
+		this.placa = placa;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.cor = cor;
+		this.tipo = tipo;
+	}
 
-public void setMarca(String marca) {
-	this.marca = marca;
-}
+	public Company getCompany() {
+		return company;
+	}
 
-public String getModelo() {
-	return modelo;
-}
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 
-public void setModelo(String modelo) {
-	this.modelo = modelo;
-}
+	public String getId() {
+		return id;
+	}
 
-public String getCor() {
-	return cor;
-}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-public void setCor(String cor) {
-	this.cor = cor;
-}
+	public String getMarca() {
+		return marca;
+	}
 
-public String getPlaca() {
-	return placa;
-}
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 
-public void setPlaca(String placa) {
-	this.placa = placa;
-}
+	public String getModelo() {
+		return modelo;
+	}
 
-public String getTipo() {
-	return tipo;
-}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
 
-public void setTipo(String tipo) {
-	this.tipo = tipo;
-}
+	public String getCor() {
+		return cor;
+	}
 
-@Override
-public int hashCode() {
-	return Objects.hash(modelo, placa);
-}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Vehicle other = (Vehicle) obj;
-	return Objects.equals(modelo, other.modelo) && Objects.equals(placa, other.placa);
-}
+	public String getPlaca() {
+		return placa;
+	}
 
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 
-public MovementRecord getMovementRecord() {
-	return movementRecord;
-}
+	public String getTipo() {
+		return tipo;
+	}
 
-public void setMovementRecord(MovementRecord movementRecord) {
-	this.movementRecord = movementRecord;
-}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-@Override
-public String toString() {
-	return "Vehicle [id=" + id + ", placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor
-			+ ", tipo=" + tipo + "]";
-}
+	@Override
+	public int hashCode() {
+		return Objects.hash(modelo, placa);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehicle other = (Vehicle) obj;
+		return Objects.equals(modelo, other.modelo) && Objects.equals(placa, other.placa);
+	}
+
+	public MovementRecord getMovementRecord() {
+		return movementRecord;
+	}
+
+	public void setMovementRecord(MovementRecord movementRecord) {
+		this.movementRecord = movementRecord;
+	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [id=" + id + ", placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor
+				+ ", tipo=" + tipo + "]";
+	}
 
 }

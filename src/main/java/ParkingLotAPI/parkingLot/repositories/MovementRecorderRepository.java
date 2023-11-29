@@ -4,7 +4,7 @@ package ParkingLotAPI.parkingLot.repositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import ParkingLotAPI.parkingLot.util.MovementRecord;
+import ParkingLotAPI.parkingLot.model.MovementRecord;
 
 public interface MovementRecorderRepository extends MongoRepository<MovementRecord,String> {
 	

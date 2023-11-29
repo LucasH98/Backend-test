@@ -3,15 +3,16 @@ package ParkingLotAPI.parkingLot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ParkingLotAPI.parkingLot.model.MovementRecord;
+import ParkingLotAPI.parkingLot.model.TransactionReport;
 import ParkingLotAPI.parkingLot.model.Vehicle;
 import ParkingLotAPI.parkingLot.repositories.MovementRecorderRepository;
+import ParkingLotAPI.parkingLot.repositories.TransactionReportRepository;
 import ParkingLotAPI.parkingLot.repositories.VehicleRepository;
 import ParkingLotAPI.parkingLot.service.exceptions.InvalidEntryException;
 import ParkingLotAPI.parkingLot.service.exceptions.InvalidExitException;
 import ParkingLotAPI.parkingLot.service.exceptions.ResourceNotFoundException;
 import ParkingLotAPI.parkingLot.service.exceptions.VehicleNotFoundException;
-import ParkingLotAPI.parkingLot.util.MovementRecord;
-import ParkingLotAPI.parkingLot.util.TransactionReport;
 
 @Service
 public class MovementRecordService {
@@ -21,15 +22,13 @@ public class MovementRecordService {
 
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	
-	
-	private TransactionReport transactionReport ; 
-	
+
+	@Autowired
+	private TransactionReportRepository traReportRepository;
 
 	public MovementRecord generateRecord(String idvehicle) {
 
-		Vehicle vehicle = vehicleRepository.findById(idvehicle)
-				.orElseThrow(() -> new VehicleNotFoundException(idvehicle));
+		Vehicle vehicle = vehicleRepository.findById(idvehicle).orElseThrow(() -> new VehicleNotFoundException(idvehicle));
 
 		if (vehicle.getMovementRecord() != null) {
 			throw new RuntimeException("Veículo Já registrado ! ");
@@ -50,66 +49,57 @@ public class MovementRecordService {
 	public void entryValidator(String idVehicle) {
 
 		Vehicle v = vehicleRepository.findById(idVehicle).orElseThrow(() -> new VehicleNotFoundException(idVehicle));
+		TransactionReport tr = v.getCompany().getTransactionReport();
+		MovementRecord mr = v.getMovementRecord();
 
-		if (!v.getMovementRecord().isParking()) {
-
-			if (repository.findRecordByVehicleId(v.getId()) != null) {
-				v.getMovementRecord().entrou();
-				transactionReport.setTotalEntries(transactionReport.getTotalEntries()+1);//***
-				vehicleRepository.save(v);
-				repository.save(v.getMovementRecord());
-			}
-
-			else {
-
-				throw new InvalidEntryException("Invalid entry");
-
-			}
+		if (mr == null) {
+			throw new InvalidEntryException("Invalid entry , Movement Record cannot be null");
 		}
 
-		else {
-			throw new InvalidEntryException("Invalid entry - Veículo já entrou !");
+		if (mr.isParking()) {
+			throw new InvalidEntryException("Invalid entry ,  Entrada do veículo já registrada !");
 		}
+
+		v.getMovementRecord().entrou();
+		tr.setTotalEntries(tr.getTotalEntries() + 1);
+		traReportRepository.save(tr);
+		vehicleRepository.save(v);
+		repository.save(v.getMovementRecord());
 
 	}
 
 	public void exityValidator(String id, String placa) {
 
 		Vehicle v = vehicleRepository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
+		TransactionReport tr = v.getCompany().getTransactionReport();
+		MovementRecord mr = v.getMovementRecord();
 
-		boolean isFinded = false;
-
-		if (v.getMovementRecord().isParking()) {
+		if (mr.isParking()) {
 
 			if (v.getPlaca().equals(placa)) {
-				v.getMovementRecord().saiu();
-				transactionReport.setTotalEntries(transactionReport.getTotalEntries()+1); //***
-				repository.save(v.getMovementRecord());
+
+				mr.saiu();
+
+				tr.setTotalExits(tr.getTotalExits() + 1);
+				traReportRepository.save(tr);
+				repository.save(mr);
 				vehicleRepository.save(v);
-				isFinded = true;
 			}
 
 			else {
 				throw new InvalidExitException("Placa Inválida");
 			}
 
-		} else if (v.getMovementRecord().getEntryTime() == null) {
+		}
+
+		else if (mr.getEntryTime() == null) {
 			throw new InvalidExitException("Invalid Exit , Horario de entrada nao registrado !");
 
 		}
 
 		else {
-			throw new InvalidExitException("Invalid Exit --> Veículo já saiu do estabelecimento , Horario da saída : "
-					+ v.getMovementRecord().getEntryTime());
+			throw new InvalidExitException("Invalid Exit --> Veículo já saiu do estabelecimento , Horario da saída : " + mr.getEntryTime());
 		}
-
-		repository.save(v.getMovementRecord());
-
-		if (!isFinded) {
-			throw new InvalidExitException("Invalid Exit");
-
-		}
-
 	}
 
 	public MovementRecord findRecordByPlaca(String placa) {

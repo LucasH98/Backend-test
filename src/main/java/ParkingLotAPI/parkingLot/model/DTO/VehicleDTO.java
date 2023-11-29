@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import ParkingLotAPI.parkingLot.model.Vehicle;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "DTO  do veiculo ")
 
 public class VehicleDTO implements Serializable{
-	private static final long serialVersionUID = 1L; 
+	private static final long serialVersionUID = 1L;
+	
 	
 		private String id ;
+		@Schema(description = "Marca do veiculo ")
 		private String marca;
 		private String modelo;
 		private String cor;

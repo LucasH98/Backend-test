@@ -3,8 +3,8 @@ package ParkingLotAPI.parkingLot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ParkingLotAPI.parkingLot.model.TransactionReport;
 import ParkingLotAPI.parkingLot.repositories.TransactionReportRepository;
-import ParkingLotAPI.parkingLot.util.TransactionReport;
 
 @Service
 public class TransactionReportService {
@@ -15,7 +15,7 @@ public class TransactionReportService {
 	@Autowired
 
 	public TransactionReport insert(TransactionReport transactionReport) {
-			
+
 		return transactionReportRepository.save(transactionReport);
 	}
 
@@ -23,5 +23,4 @@ public class TransactionReportService {
 		transactionReportRepository.deleteById(id);
 	}
 
-	
 }
