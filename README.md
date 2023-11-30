@@ -1,3 +1,11 @@
 # parkinglot system
 ## Descrição do Projeto
-A aplicação consiste na minha implementação de um sistema de estacionamento referente a um desafio backend.
+API REST para gerenciar um estacionamento de carros e motos.
+
+# Tecnologias utilizadas
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Maven
+- Swagger
+- Banco de dados : MongoDB
