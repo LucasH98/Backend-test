@@ -1,10 +1,10 @@
-# parkinglot system
+# 🔖&nbsp; Parkinglot System
 ## Descrição
 API REST para gerenciar um estacionamento de carros e motos.
 
 Obs: link de referência : https://github.com/fcamarasantos/backend-test-java#readme
 
-## Tecnologias utilizadas
+## 🚀  Tecnologias utilizadas
 - Java
 - Spring Boot
 - JPA / Hibernate
@@ -12,7 +12,7 @@ Obs: link de referência : https://github.com/fcamarasantos/backend-test-java#re
 - Swagger
 - Banco de dados : MongoDB
 
-## Como baixar o projeto
+##  🗂 Como baixar o projeto
 
 
 ```bash
