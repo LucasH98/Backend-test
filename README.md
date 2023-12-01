@@ -12,7 +12,7 @@ Obs: link de referência : https://github.com/fcamarasantos/backend-test-java#re
 - Swagger
 - Banco de dados : MongoDB
 
-## 🗂 Como baixar o projeto
+## Como baixar o projeto
 
 
 ```bash
