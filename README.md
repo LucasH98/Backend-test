@@ -21,7 +21,7 @@ Obs: desenvolvido tendo este desafio como referência : https://github.com/fcama
     $ git clone https://github.com/LucasH98/PakinglotSystem-Backend-test
 
     # Entrar no diretório
-    $ cd parkingLot
+    $ cd PakinglotSystem-Backend-test
 ```
 
 ## Instalar as dependências
