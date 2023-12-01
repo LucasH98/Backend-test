@@ -11,6 +11,8 @@ Obs: link de referência : https://github.com/fcamarasantos/backend-test-java#re
 - Maven
 - Swagger
 - Banco de dados : MongoDB
+- DTO
+- Clean Code
 
 ## Como baixar o projeto
 
