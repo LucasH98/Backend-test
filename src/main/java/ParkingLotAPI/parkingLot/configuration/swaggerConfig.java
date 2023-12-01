@@ -16,7 +16,7 @@ public class swaggerConfig {
 	              .info(new Info().title("Parkinglot API")
 	              .description("Spring boot API sample application")
 	              .version("v0.0.1")
-	              .license(new License().name("GitHub repository").url("https://github.com/LucasH98/parkingLot")));
+	              .license(new License().name("GitHub repository").url("https://github.com/LucasH98/PakinglotSystem-Backend-test")));
 	  }
 	
 }
