@@ -11,21 +11,27 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Document
 public class MovementRecord implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Schema(description = "ID do registro de movimento")
 	@Id
 	private String id;
 
 	@DBRef
 	@JsonIgnore
+	 @Schema(description = "Veículo associado ao registro de movimento")
 	private Vehicle vehicle;
 
 	@Field("entryTime")
+	@Schema(description = "Data e hora de entrada")
 	private LocalDateTime entryTime;
 
 	@Field("exitTime")
+	@Schema(description = "Data e hora de saída")
 	private LocalDateTime exitTime;
 
 	// @Transient

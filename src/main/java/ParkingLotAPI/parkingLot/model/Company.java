@@ -11,154 +11,143 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Document(collection = "Company")
-public class Company implements  Serializable{
-private static final long serialVersionUID = 1L;
+public class Company implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-@Id
-private String id;
-private String cnpj;
-private String name;
-private String endereco;
-private String telefone;
-private Integer qntVagaCarro;
-private Integer qntVagaMoto;	
+	@Id
+	@Schema(description = "ID da empresa")
+	private String id;
 
-@DBRef(lazy=true)
-private List<Vehicle> vehicles  = new ArrayList<>();
+	@Schema(description = "CNPJ da empresa")
+	private String cnpj;
 
-@DBRef
-@JsonIgnore
-private TransactionReport transactionReport ;
+	@Schema(description = "Nome da empresa")
+	private String name;
 
-public Company(String id,String cnpj,String name, String endereco, String telefone, Integer qntVagaCarro, Integer qntVagaMoto) {
-	
-	this.id = id;
-	this.cnpj = cnpj;
-	this.name = name;
-	this.endereco = endereco;
-	this.telefone = telefone;
-	this.qntVagaCarro = qntVagaCarro;
-	this.qntVagaMoto = qntVagaMoto;
-}
+	@Schema(description = "Endereço da empresa")
+	private String endereco;
 
-public String getId() {
-return id;	
-}
+	@Schema(description = "Número de telefone da empresa")
+	private String telefone;
 
-public void setId(String id) {
-	this.id = id ;
-}
+	@Schema(description = "Quantidade de vagas para carros")
+	private Integer qntVagaCarro;
+	@Schema(description = "Quantidade de vagas para motos")
+	private Integer qntVagaMoto;
 
-public String getName() {
-	return name;
-}
+	@DBRef(lazy = true)
+	@Schema(description = "Lista de veículos associados à empresa")
+	private List<Vehicle> vehicles = new ArrayList<>();
 
+	@DBRef
+	@JsonIgnore
+	private TransactionReport transactionReport;
 
+	public Company(String id, String cnpj, String name, String endereco, String telefone, Integer qntVagaCarro,
+			Integer qntVagaMoto) {
 
-public void setName(String name) {
-	this.name = name;
-}
+		this.id = id;
+		this.cnpj = cnpj;
+		this.name = name;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.qntVagaCarro = qntVagaCarro;
+		this.qntVagaMoto = qntVagaMoto;
+	}
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 
-public String getCnpj() {
-	return cnpj;
-}
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public String getCnpj() {
+		return cnpj;
+	}
 
-public void setCnpj(String cnpj) {
-	this.cnpj = cnpj;
-}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
 
+	public String getEndereco() {
+		return endereco;
+	}
 
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
-public String getEndereco() {
-	return endereco;
-}
+	public String getTelefone() {
+		return telefone;
+	}
 
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
+	public Integer getQntVagaCarro() {
+		return qntVagaCarro;
+	}
 
-public void setEndereco(String endereco) {
-	this.endereco = endereco;
-}
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
 
+	public TransactionReport getTransactionReport() {
+		return transactionReport;
+	}
 
+	public void setTransactionReport(TransactionReport transactionReport) {
+		this.transactionReport = transactionReport;
+	}
 
-public String getTelefone() {
-	return telefone;
-}
+	@Override
+	public int hashCode() {
+		return Objects.hash(cnpj);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Company other = (Company) obj;
+		return Objects.equals(cnpj, other.cnpj);
+	}
 
+	public void setQntVagaCarro(Integer qntVagaCarro) {
+		this.qntVagaCarro = qntVagaCarro;
+	}
 
-public void setTelefone(String telefone) {
-	this.telefone = telefone;
-}
+	public Integer getQntVagaMoto() {
+		return qntVagaMoto;
+	}
 
+	public void setQntVagaMoto(Integer qntVagaMoto) {
+		this.qntVagaMoto = qntVagaMoto;
+	}
 
-
-public Integer getQntVagaCarro() {
-	return qntVagaCarro;
-}
-
-
-public List<Vehicle> getVehicles() {
-	return vehicles;
-}
-
-
-
-public TransactionReport getTransactionReport() {
-	return transactionReport;
-}
-
-public void setTransactionReport(TransactionReport transactionReport) {
-	this.transactionReport = transactionReport;
-}
-
-@Override
-public int hashCode() {
-	return Objects.hash(cnpj);
-}
-
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Company other = (Company) obj;
-	return Objects.equals(cnpj, other.cnpj);
-}
-
-
-
-public void setQntVagaCarro(Integer qntVagaCarro) {	
-	this.qntVagaCarro = qntVagaCarro;
-}
-
-public Integer getQntVagaMoto() {
-	return qntVagaMoto;
-}
-
-public void setQntVagaMoto(Integer qntVagaMoto) {
-	this.qntVagaMoto = qntVagaMoto;
-}
-
-
-@Override
-public String toString() {
-	return "Company [id=" + id + ", cnpj=" + cnpj + ", name=" + name + ", endereco=" + endereco + ", telefone="
-			+ telefone + ", qntVagaCarro=" + qntVagaCarro + ", qntVagaMoto=" + qntVagaMoto + ", vehicles=" + vehicles
-			+ "]";
-}
-
+	@Override
+	public String toString() {
+		return "Company [id=" + id + ", cnpj=" + cnpj + ", name=" + name + ", endereco=" + endereco + ", telefone="
+				+ telefone + ", qntVagaCarro=" + qntVagaCarro + ", qntVagaMoto=" + qntVagaMoto + ", vehicles="
+				+ vehicles + "]";
+	}
 
 }
-

@@ -6,129 +6,141 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Document(collection = "Vehicle")
 public class Vehicle implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	private String id;
-	private String placa;
-	private String marca;
-	private String modelo;
-	private String cor;
-	private String tipo;
+    @Id
+    @Schema(description = "ID do veículo")
+    private String id;
 
-	@DBRef
-	//@JsonBackReference
-	@JsonIgnore
-	private MovementRecord movementRecord;
+    @Schema(description = "Placa do veículo")
+    private String placa;
 
-	@DBRef
-	@JsonIgnore
-	private Company company;
+    @Schema(description = "Marca do veículo")
+    private String marca;
 
-	public Vehicle() {
+    @Schema(description = "Modelo do veículo")
+    private String modelo;
 
-	}
+    @Schema(description = "Cor do veículo")
+    private String cor;
 
-	public Vehicle(String id, String placa, String marca, String modelo, String cor, String tipo) {
+    @Schema(description = "Tipo do veículo")
+    private String tipo;
 
-		this.id = id;
-		this.placa = placa;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.cor = cor;
-		this.tipo = tipo;
-	}
+    @DBRef
+    @JsonIgnore
+    private MovementRecord movementRecord;
 
-	public Company getCompany() {
-		return company;
-	}
+    @DBRef
+    @JsonIgnore
+    private Company company;
 
-	public void setCompany(Company company) {
-		this.company = company;
-	}
+    public Vehicle() {
 
-	public String getId() {
-		return id;
-	}
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public Vehicle(String id, String placa, String marca, String modelo, String cor, String tipo) {
+        this.id = id;
+        this.placa = placa;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cor = cor;
+        this.tipo = tipo;
+    }
 
-	public String getMarca() {
-		return marca;
-	}
+    // Métodos de acesso e modificação dos atributos
 
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(modelo, placa);
+    }
 
-	public String getModelo() {
-		return modelo;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Vehicle other = (Vehicle) obj;
+        return Objects.equals(modelo, other.modelo) && Objects.equals(placa, other.placa);
+    }
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
+    // Métodos de acesso e modificação dos atributos
 
-	public String getCor() {
-		return cor;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getPlaca() {
-		return placa;
-	}
+    public String getPlaca() {
+        return placa;
+    }
 
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public String getMarca() {
+        return marca;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(modelo, placa);
-	}
+    public String getModelo() {
+        return modelo;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Vehicle other = (Vehicle) obj;
-		return Objects.equals(modelo, other.modelo) && Objects.equals(placa, other.placa);
-	}
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
-	public MovementRecord getMovementRecord() {
-		return movementRecord;
-	}
+    public String getCor() {
+        return cor;
+    }
 
-	public void setMovementRecord(MovementRecord movementRecord) {
-		this.movementRecord = movementRecord;
-	}
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
 
-	@Override
-	public String toString() {
-		return "Vehicle [id=" + id + ", placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor
-				+ ", tipo=" + tipo + "]";
-	}
+    public String getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public MovementRecord getMovementRecord() {
+        return movementRecord;
+    }
+
+    public void setMovementRecord(MovementRecord movementRecord) {
+        this.movementRecord = movementRecord;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle [id=" + id + ", placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor
+                + ", tipo=" + tipo + "]";
+    }
 }
