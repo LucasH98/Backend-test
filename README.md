@@ -21,7 +21,7 @@ Obs: link de referência : https://github.com/fcamarasantos/backend-test-java#re
     $ git clone https://github.com/LucasH98/PakinglotSystem-Backend-test
 ```
 
-## Compilar o Projeto
+## Instalar as dependências
 
 ```bash
 mvn clean install
