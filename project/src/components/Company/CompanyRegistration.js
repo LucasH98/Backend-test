@@ -21,7 +21,7 @@ export default function CompanyRegistration() {
     });
 
 
-    //todo :compreender melhor esse trecho e como adicionar no array de veiculos cada veiculo criado
+    //todo :dicionar no array de veiculos cada veiculo criado
 
     const handleChange = (e) => {
         const {name,value} = e.target;
