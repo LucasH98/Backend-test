@@ -10,10 +10,9 @@ const createVehicleUrl = 'http://localhost:8080/vehicle/add/';
 //const getCompanyByIdCompanyUrl = 'http://localhost:8080/company/';
 
 
-//todo:verificar como passar o id da company para este componente pois apenas é criado um vehicle se houve uma company associada
-//criar de fato um veiculo 
+//todo: passar o id da company para este componente pois apenas é criado um vehicle se houve uma company associada
 
-//insercao no array de veiculos --> para cada veiculo x da empresa de id x adiciona-lo na lista de veiculos da company
+
 
 export default function VehicleRegistration({ CompanyId }) {
 
