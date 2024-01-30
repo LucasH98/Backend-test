@@ -13,7 +13,9 @@ obs2:comecei a implementação do front usando react
 - Maven
 - Swagger
 - Banco de dados : MongoDB
-- Javascript/react ;
+- Javascript
+- jsx
+- react 
 
 ##  🗂 Como baixar o projeto
 
