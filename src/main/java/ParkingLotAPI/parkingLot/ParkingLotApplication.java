@@ -30,12 +30,11 @@ public class ParkingLotApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		
-		/* clean db */
-		
-		mrRep.deleteAll();
-		compRep.deleteAll();
-		vehicleRep.deleteAll();
-		transactionRep.deleteAll();
+compRep.deleteAll();
+vehicleRep.deleteAll();
+mrRep.deleteAll();	
+transactionRep.deleteAll();
+
 		
 	}
 

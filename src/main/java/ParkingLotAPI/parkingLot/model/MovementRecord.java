@@ -23,7 +23,7 @@ public class MovementRecord implements Serializable {
 
 	@DBRef
 	@JsonIgnore
-	 @Schema(description = "Veículo associado ao registro de movimento")
+	@Schema(description = "Veículo associado ao registro de movimento")
 	private Vehicle vehicle;
 
 	@Field("entryTime")
@@ -34,7 +34,7 @@ public class MovementRecord implements Serializable {
 	@Schema(description = "Data e hora de saída")
 	private LocalDateTime exitTime;
 
-	// @Transient
+	
 	private boolean isParking;
 
 	public MovementRecord() {

@@ -7,7 +7,7 @@ import ParkingLotAPI.parkingLot.model.MovementRecord;
 import ParkingLotAPI.parkingLot.service.MovementRecordService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @Tag(name="Api do registro de movimento dos veículos")
 @RestController
 @RequestMapping("/record")

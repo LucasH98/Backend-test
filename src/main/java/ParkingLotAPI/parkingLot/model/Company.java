@@ -46,12 +46,12 @@ public class Company implements Serializable {
 	@JsonIgnore
 	private TransactionReport transactionReport;
 
-	public Company(String id, String cnpj, String name, String endereco, String telefone, Integer qntVagaCarro,
+	public Company(String id, String name, String cnpj, String endereco, String telefone, Integer qntVagaCarro,
 			Integer qntVagaMoto) {
 
 		this.id = id;
-		this.cnpj = cnpj;
 		this.name = name;
+		this.cnpj = cnpj;
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.qntVagaCarro = qntVagaCarro;
