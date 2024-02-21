@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,61 +68,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# 🔖&nbsp; Parkinglot System
-## Descrição
-API REST para gerenciar um estacionamento de carros e motos.
-
-Obs: desenvolvido tendo este desafio como referência : https://github.com/fcamarasantos/backend-test-java#readme
-
-obs2 :comecei a implementação do front-end usando reactJs
-
-## 🚀  Tecnologias utilizadas
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Maven
-- Swagger
-- Banco de dados : MongoDB
-- Javascript
-- jsx
-- react 
-
-##  🗂 Como baixar o projeto
-
-
-```bash
-
-    # Clonar o repositório
-    $ git clone https://github.com/LucasH98/PakinglotSystem-Backend-test
-
-    # Entrar no diretório
-    $ cd PakinglotSystem-Backend-test
-```
-
-## Instalar as dependências
-
-```bash
-mvn clean install
-```
-## Executar a Aplicação
-
-```bash
-mvn spring-boot:run
-```
-## Configuração
-Arquivo de Configuração:
-Certifique-se de verificar e configurar as propriedades necessárias no arquivo application.properties ou application.yml.
-Banco de Dados: Se estiver usando um banco de dados, configure as propriedades de conexão no arquivo de configuração.
-
-## Acesse a Interface do Swagger
-
-```bash
-http://localhost:8080/swagger-ui/index.html
-```
-
-
-
-
-
->>>>>>> 15e7d340d0cad65ca82a63ddc218d4d2f8c4dabd
