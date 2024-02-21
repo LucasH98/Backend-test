@@ -3,15 +3,15 @@ main{
 }
 
 body {
-    background-color: #f4f4f4; /* Cor de fundo do corpo */
-    font-family: Arial, sans-serif; /* Fonte padrão */
+    background-color: #f4f4f4; 
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centralizar conteúdo na tela */
+    max-width: 800px;
+    margin: 0 auto; 
 }
 
 h2 {
@@ -21,7 +21,6 @@ h2 {
 
 p {
     text-align: center;
-    color: #555; /* Cor do texto */
+    color: #555;
 }
 
-/* Adapte o estilo do componente LoginCompany conforme necessário */
