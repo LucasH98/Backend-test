@@ -4,7 +4,7 @@ API REST para gerenciar um estacionamento de carros e motos.
 
 Obs: desenvolvido tendo este desafio como referência : https://github.com/fcamarasantos/backend-test-java#readme
 
-obs2:comecei a implementação do front usando react
+obs2 :comecei a implementação do front-end usando reactJs
 
 ## 🚀  Tecnologias utilizadas
 - Java
