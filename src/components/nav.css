@@ -1,0 +1,43 @@
+/* nav.css */
+
+nav {
+    background-color: #007bff;
+    padding: 10px;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    left: 0; /* Adicione esta propriedade para alinhar à esquerda */
+}
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    border: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

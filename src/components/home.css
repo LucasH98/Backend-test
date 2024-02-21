@@ -1,0 +1,27 @@
+main{
+    margin: 0; 
+}
+
+body {
+    background-color: #f4f4f4; /* Cor de fundo do corpo */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centralizar conteúdo na tela */
+}
+
+h2 {
+    text-align: center;
+    color:black; /* Cor do título */
+}
+
+p {
+    text-align: center;
+    color: #555; /* Cor do texto */
+}
+
+/* Adapte o estilo do componente LoginCompany conforme necessário */
